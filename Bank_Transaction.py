@@ -25,6 +25,9 @@ class Bank_Account:
         else:
             return self.Transactions.pop()
 
+    def Full_Name(self):
+        return "{} {}".format(self.First_Name,self.Last_Name)
+
 
 cus1=Bank_Account("Maheboob","Tumkur",111222333444)
 print(cus1.First_Name)
@@ -32,3 +35,4 @@ print(cus1.Account_Number)
 cus1.deposit(1000)
 print(cus1.Balance)
 print(cus1.Transactions)
+print(cus1.Full_Name())
