@@ -1,38 +1,43 @@
 class Bank_Account:
-    def __init__(self,First_Name,Last_Name,Account_Number,Balance=1000):
-        self.First_Name=First_Name
-        self.Last_Name=Last_Name
-        self.Account_Number=Account_Number
-        self.Balance=Balance
-        self.Transactions=[]
+    Account_Number=0
+    def __init__(self, First_Name, Last_Name, Balance=1000):
+        self.First_Name = First_Name
+        self.Last_Name = Last_Name
+        self.Balance = Balance
+        self.Transactions = []
+    Account_Number += 1
 
     def deposit(self, amount):
-        self.Balance +=amount
+        self.Balance += amount
         self.Transactions.append(+amount)
         return amount
 
-    def withdrawal(self,amount):
-        if self.Balance-amount>0:
-            self.Balance -=amount
+    def withdrawal(self, amount):
+        if self.Balance-amount > 0 and self.Balance-amount >= 500:
+            self.Balance -= amount
             self.Transactions.append(-amount)
             return amount
         else:
-            return "Your Account does not have sufficient balance"
+            return "Your Transaction cannot be completed, Please maintain minimum account balance \n'THANK YOU'"
 
     def Transactions(self):
-        if len(self.Transactions)<1:
+        if len(self.Transactions) < 1:
             return None
         else:
             return self.Transactions.pop()
 
     def Full_Name(self):
-        return "{} {}".format(self.First_Name,self.Last_Name)
+        return "{} {}".format(self.First_Name, self.Last_Name)
 
 
-cus1=Bank_Account("Maheboob","Tumkur",111222333444)
-print(cus1.First_Name)
-print(cus1.Account_Number)
-cus1.deposit(1000)
+    # def minimum_balance(self,min_bal):
+    #     if self.Balance>=self.min_bal:
+    #
+
+
+cus1=Bank_Account("Maheboob","Tumkur")
+print(cus1.deposit(1000))
+print(cus1.withdrawal(150))
 print(cus1.Balance)
 print(cus1.Transactions)
-print(cus1.Full_Name())
+print(cus1.Account_Number)
