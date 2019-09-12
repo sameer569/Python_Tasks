@@ -13,12 +13,15 @@ class Bank_Account:
         return amount
 
     def withdrawal(self, amount):
-        if self.Balance-amount > 0 and self.Balance-amount >= 500:
-            self.Balance -= amount
-            self.Transactions.append(-amount)
-            return amount
+        if self.Balance-amount > 0 :
+            if self.Balance-amount >= 500:
+                self.Balance -= amount
+                self.Transactions.append(-amount)
+                return amount
+            else:
+                return "please maintain minimum account balance of 500"
         else:
-            return "Your Transaction cannot be completed, Please maintain minimum account balance \n'THANK YOU'"
+            return "Your Transaction cannot be completed,"
 
     def Transactions(self):
         if len(self.Transactions) < 1:
@@ -30,14 +33,10 @@ class Bank_Account:
         return "{} {}".format(self.First_Name, self.Last_Name)
 
 
-    # def minimum_balance(self,min_bal):
-    #     if self.Balance>=self.min_bal:
-    #
-
 
 cus1=Bank_Account("Maheboob","Tumkur")
 print(cus1.deposit(1000))
-print(cus1.withdrawal(150))
+print(cus1.withdrawal(2001))
 print(cus1.Balance)
 print(cus1.Transactions)
 print(cus1.Account_Number)
